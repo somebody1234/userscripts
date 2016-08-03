@@ -35,6 +35,7 @@
 }
 
 #GM-reader-view {
+	overflow: auto;
 	z-index: 1001;
 	top: 0;
 	display: flex;
@@ -144,7 +145,7 @@
 			div.classList.add('GM-reader-hidden');
 			currentElement.classList.remove('GM-reader-active');
 			currentElement = undefined;
-			for (let i = articles.length - 1; i; i--) {
+			for (let i = articles.length - 1; i > -1; i--) {
 				if (next[i])
 					parents[i].insertBefore(articles[i], next[i]);
 				else

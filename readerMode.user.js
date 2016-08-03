@@ -1,12 +1,11 @@
 // ==UserScript==
 // @name         Reader Mode
-// @namespace    global
+// @namespace    
 // @version      0.0.1
 // @description  try to take over the world!
 // @author       Mars Ultor
 // @match        http://*/*
 // @grant        none
-// @updateURL    https://rawgit.com/somebody1234/userscripts/master/readerMode.user.js
 // ==/UserScript==
 
 (function readerView() {
@@ -36,9 +35,10 @@
 
 #GM-reader-view {
 	z-index: 1001;
+	overflow: auto;
 	top: 0;
 	display: flex;
-	background: white;
+	background: inherit;
 	position: fixed;
 	width: 100%;
 	height: 100%;

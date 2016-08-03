@@ -1,11 +1,12 @@
 // ==UserScript==
 // @name         Reader Mode
-// @namespace    
+// @namespace    global
 // @version      0.0.1
 // @description  try to take over the world!
 // @author       Mars Ultor
 // @match        http://*/*
 // @grant        none
+// @updateURL    https://rawgit.com/somebody1234/userscripts/master/readerMode.user.js
 // ==/UserScript==
 
 (function readerView() {
@@ -35,10 +36,9 @@
 
 #GM-reader-view {
 	z-index: 1001;
-	overflow: auto;
 	top: 0;
 	display: flex;
-	background: inherit;
+	background: white;
 	position: fixed;
 	width: 100%;
 	height: 100%;
@@ -144,7 +144,7 @@
 			div.classList.add('GM-reader-hidden');
 			currentElement.classList.remove('GM-reader-active');
 			currentElement = undefined;
-			for (let i = articles.length; i; i--) {
+			for (let i = articles.length - 1; i; i--) {
 				if (next[i])
 					parents[i].insertBefore(articles[i], next[i]);
 				else

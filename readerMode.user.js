@@ -30,7 +30,7 @@
 	else
 		config = {};
 	style.innerHTML = `\
-#GM-reader-view > div > div:not(.GM-reader-ui):not(.GM-reader-active), #GM-reader-view.GM-reader-hidden {
+#GM-reader-view > div > div:not(.GM-reader-ui):not(.GM-reader-active), #GM-reader-view.GM-reader-hidden, .GM-reader-hidden {
 	display: none;
 }
 
@@ -57,8 +57,7 @@
 		return;
 	currentElement = articles[0];
 	let div = c('div');
-	div.onkeydown = function onkeydown (e) {
-		//TODO: restrict targets
+	window.addEventListener('keydown', function onkeydown (e) {
 		if (!active || !keys.includes(e.key))
 			return;
 		if (e.key === 'a' || e.key === 'ArrowLeft')
@@ -66,64 +65,64 @@
 		else
 			currentIndex++;
 		changeCurrentElement();
-	};
+	});
 	center.classList.add('GM-reader-ui');
-	if (articles.length > 1) {
-		let d1 = c('div'),
-			d2 = c('div'),
-			d4 = c('div'),
-			d5 = c('div'),
-			d6 = c('div'),
-			left = c('div'),
-			d7 = c('div'),
-			d8 = c('div'),
-			right = c('div'),
-			d9 = c('div');
-		d1.classList.add('GM-reader-ui');
-		d2.classList.add('GM-reader-ui');
-		d4.classList.add('GM-reader-ui');
-		d5.classList.add('GM-reader-ui');
-		d6.classList.add('GM-reader-ui');
-		left.classList.add('GM-reader-ui');
-		d7.classList.add('GM-reader-ui');
-		d8.classList.add('GM-reader-ui');
-		right.classList.add('GM-reader-ui');
-		d9.classList.add('GM-reader-ui');
-		left.innerHTML = `\
+	let d1 = c('div'),
+		d2 = c('div'),
+		d4 = c('div'),
+		d5 = c('div'),
+		d6 = c('div'),
+		left = c('div'),
+		d7 = c('div'),
+		d8 = c('div'),
+		right = c('div'),
+		d9 = c('div');
+	d1.classList.add('GM-reader-ui');
+	d2.classList.add('GM-reader-ui');
+	d4.classList.add('GM-reader-ui');
+	d5.classList.add('GM-reader-ui');
+	d6.classList.add('GM-reader-ui');
+	left.classList.add('GM-reader-ui');
+	d7.classList.add('GM-reader-ui');
+	d8.classList.add('GM-reader-ui');
+	right.classList.add('GM-reader-ui');
+	d9.classList.add('GM-reader-ui');
+	left.innerHTML = `\
 <svg fill="#000000" height="48" viewBox="0 0 24 24" width="48" xmlns="http://www.w3.org/2000/svg">
-	<path d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z"/>
-	<path d="M0-.5h24v24H0z" fill="none"/>
+<path d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z"/>
+<path d="M0-.5h24v24H0z" fill="none"/>
 </svg>`;
-		right.innerHTML = `\
+	right.innerHTML = `\
 <svg fill="#000000" height="48" viewBox="0 0 24 24" width="48" xmlns="http://www.w3.org/2000/svg">
-	<path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"/>
-	<path d="M0-.25h24v24H0z" fill="none"/>
+<path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"/>
+<path d="M0-.25h24v24H0z" fill="none"/>
 </svg>`;
-		d1.style.flex = center.style.flex = d5.style.flex = left.style.flex = right.style.flex = '0 1 auto';
-		d2.style.flex = d4.style.flex = d6.style.flex = d7.style.flex = d8.style.flex = d9.style.flex = '1 0 auto';
-		d1.style.display = d5.style.display = 'flex';
-		d1.style.flexFlow = d5.style.flexFlow = 'column';
-		div.appendChild(d1);
-		div.appendChild(d2);
-		div.appendChild(center);
-		div.appendChild(d4);
-		div.appendChild(d5);
-		d1.appendChild(d6);
-		d1.appendChild(left);
-		d1.appendChild(d7);
-		d5.appendChild(d8);
-		d5.appendChild(right);
-		d5.appendChild(d9);
-		left.onclick = function onclick () {
-			currentIndex--;
-			changeCurrentElement();
-		};
-		right.onclick = function onclick () {
-			currentIndex++;
-			changeCurrentElement();
-		};
-	} else {
-		div = center;
+	d1.style.flex = center.style.flex = d5.style.flex = left.style.flex = right.style.flex = '0 1 auto';
+	d2.style.flex = d4.style.flex = d6.style.flex = d7.style.flex = d8.style.flex = d9.style.flex = '1 0 auto';
+	d1.style.display = d5.style.display = 'flex';
+	d1.style.flexFlow = d5.style.flexFlow = 'column';
+	div.appendChild(d1);
+	div.appendChild(d2);
+	div.appendChild(center);
+	div.appendChild(d4);
+	div.appendChild(d5);
+	d1.appendChild(d6);
+	d1.appendChild(left);
+	d1.appendChild(d7);
+	d5.appendChild(d8);
+	d5.appendChild(right);
+	d5.appendChild(d9);
+	left.onclick = function onclick () {
+		currentIndex--;
+		changeCurrentElement();
+	};
+	right.onclick = function onclick () {
+		currentIndex++;
+		changeCurrentElement();
+	};
+	if (articles.length === 1) {
+		d1.classList.add('GM-reader-hidden');
+		d5.classList.add('GM-reader-hidden');
 	}
 	div.id = 'GM-reader-view';
 	div.classList.add('GM-reader-hidden');

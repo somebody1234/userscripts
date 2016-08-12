@@ -4,7 +4,7 @@
 // @version      0.0.1
 // @description  try to take over the world!
 // @author       Mars Ultor
-// @match        http://*/*
+// @match        *://*/*
 // @grant        none
 // @updateURL    https://rawgit.com/somebody1234/userscripts/master/readerMode.user.js
 // ==/UserScript==

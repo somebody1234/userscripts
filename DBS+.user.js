@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         DBS+
 // @namespace    https://deadbeefsociety.org
-// @version      0.0.1
+// @version      0.0.2
 // @description  Make DBS better
 // @author       somebody
 // @match        *://deadbeefsociety.org
@@ -114,6 +114,8 @@ td {
                 nameCell = document.createElement('td'),
                 scoreCell = document.createElement('td');
             nameCell.classList.add('name');
+            nameCell.classList.add('text-center');
+            scoreCell.classList.add('text-center');
             nameCell.innerText = leaderboard[i].name;
             nameCell.addEventListener('click', function () {
                 window.location.href = 'https://scoreboard.deadbeefsociety.org/view/' + leaderboard[i].name;

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         DBS+
 // @namespace    https://deadbeefsociety.org
-// @version      0.0.3
+// @version      0.0.4
 // @description  Make DBS better
 // @author       somebody
 // @match        *://deadbeefsociety.org
@@ -41,9 +41,19 @@
 .large-offset-2.leader:hover {
     background-color: #bbbbbb;
     cursor: pointer;
+}
+.board.level:hover {
+    background-color: #444444;
 }`;
     document.head.appendChild(style);
     for (let node of [].slice.call(document.getElementsByClassName('large-offset-2'), 1))
       node.addEventListener('click', () => window.location.href = 'https://scoreboard.deadbeefsociety.org/view/' + node.innerText);
+  } else {
+    let style = document.createElement('style');
+    style.innerHTML = `\
+.board.level:hover {
+    background-color: #444444;
+}`;
+    document.head.appendChild(style);
   }
 })();

@@ -3,7 +3,7 @@
 // @namespace    http://www.diamondhunt.co
 // @description  Improve Diamond Hunt 2
 // @author       somebody
-// @version      0.0.1
+// @version      0.0.2
 // @include      http://www.diamondhunt.co/game.php
 // @updateURL    https://rawgit.com/somebody1234/userscripts/master/dh2hide.user.js
 // ==/UserScript==
@@ -25,5 +25,3 @@ $('#tab-container-bar-recipes').on('click',_=>$('#table-cooksBook-recipe tr').ea
 $('#dialogue-brewing input[value=Brew]').on('click',_=>setTimeout(_=>$('#table-brewing-recipe tr').each((i,e)=>e.style.backgroundColor=='rgb(255, 204, 224)'?$(e).hide():$(e).show()),2500));
 $('#dialogue-cooksBook input[value=Prepare]').on('click',_=>setTimeout(_=>$('#table-cooksBook-recipe tr').each((i,e)=>e.style.backgroundColor=='rgb(255, 204, 224)'?$(e).hide():$(e).show()),2500));
 $('.tab-bar td:not(#tab-container-bar-recipes),.top-links[onclick*=profile]').on('click',_=>$('#tab-container-bar-recipes').css('background','linear-gradient(black, grey)'));
-$('#div-chat').css({position:'absolute',bottom:0,width:'100%'});
-$('#div-chat-general').css('height','30vh');

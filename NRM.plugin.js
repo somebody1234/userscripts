@@ -1,6 +1,6 @@
 /**
  * @name NoReplyMention
- * @description Automatically sets replies to not mention target
+ * @description Automatically sets replies (sender side) to not mention target (@ON -> @OFF)
  * @author somebody
  * @authorId 153146360705712128
  * @authorLink https://github.com/somebody1234

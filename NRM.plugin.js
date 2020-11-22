@@ -9,19 +9,12 @@
  * @updateUrl https://raw.githubusercontent.com/somebody1234/userscripts/master/NRM.plugin.js
  */
 module.exports = class NoReplyMention {
-  load() {
-    this.createPendingReply = BdApi.findModuleByProps('createPendingReply');
-    this.unpatch = function unpatch() {};
-  }
   start() {
     this.unpatch = BdApi.monkeyPatch(
-      this.createPendingReply,
+      BdApi.findModuleByProps('createPendingReply'),
       'createPendingReply',
       {before: data => data.methodArguments[0].shouldMention = false}
     );
   }
-  stop() {
-    this.unpatch();
-    this.unpatch = function unpatch() {};
-  }
+  stop() { this.unpatch(); }
 }
